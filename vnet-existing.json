@@ -33,27 +33,6 @@
     "subnet2" : "[concat(variables('vnetID'),'/subnets/',parameters('Subnet2Name'))]"
   },
   "resources": [
-    {
-        "apiVersion": "2015-06-15",
-        "type": "Microsoft.Network/virtualNetworks/subnets",
-        "name": "[concat(parameters('virtualNetworkName'),'/',parameters('Subnet1Name'))]",
-        "location": "[parameters('location')]",
-        "properties": {
-          "addressPrefix": "[parameters('subnet1Prefix')]"
-        }
-    },
-    {
-        "apiVersion": "2015-06-15",
-        "type": "Microsoft.Network/virtualNetworks/subnets",
-        "name": "[concat(parameters('virtualNetworkName'),'/',parameters('Subnet2Name'))]",
-        "location": "[parameters('location')]",
-        "dependsOn": [
-            "[concat('Microsoft.Network/virtualNetworks/',parameters('virtualNetworkName'),'/subnets/',parameters('Subnet1Name'))]"           
-        ],
-        "properties": {
-          "addressPrefix": "[parameters('subnet2Prefix')]"
-        }
-    }
   ],
   "outputs": {
     "subnet1Ref": {
